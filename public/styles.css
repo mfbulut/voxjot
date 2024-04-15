@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #0f0b14;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #8f54a0;
+  border-radius: 4px;
+  border: 3px solid #ffffff00;
+}
+
+.container {
+  background: #0f0b14;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.container textarea {
+  outline: none;
+  resize: none;
+  border: none;
+  background: #412e58;
+  color: #8e6ed2;
+  font-size: 24px;
+  border-radius: 12px;
+  padding: 48px;
+  height: 0;
+  transition: height 0.1s;
+  overflow-x: hidden;
+  max-height: 300px;
+  display: none;
+}
+
+.record-btn {
+  background: linear-gradient(180deg, #9e00ff 0%, #7000ff 100%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: none;
+  display: block;
+  margin: 28px;
+  cursor: pointer;
+}
+
+.record-btn span {
+  display: block;
+}
+
+.record-btn::before {
+  content: "Kaydetmek için tıkla";
+  color: #5b4675;
+  position: relative;
+  bottom: 85px;
+  font-size: 16px;
+}
+
+.record-btn::after {
+  content: "Kayıtları görmek için kaydır";
+  color: #5b4675;
+  position: relative;
+  top: 85px;
+  font-size: 16px;
+}
+
+.recording .record-btn::before {
+  content: "Kaydediliyor...";
+}
+
+.recording .record-btn::after {
+  content: "";
+}
+
+.recording .record-btn {
+  background: none;
+  border: #7000ff 8px solid;
+}
+
+.controls {
+  user-select: none;
+  margin-top: 8px;
+}
+
+.controls button {
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+.controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 800px;
+  background: linear-gradient(270deg, #281d35 -2.4%, #241734 100%);
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 36px;
+  padding: 24px;
+  align-items: start;
+  color: #6d4e94;
+  min-height: 180px;
+}
+
+.note .note-content {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+}
+
+.note .note-content textarea {
+  background: linear-gradient(270deg, #281d35 -2.4%, #241734 100%);
+  outline: none;
+  resize: none;
+  border: none;
+  color: #8e6ed2;
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+
+.note .note-content button {
+  background: linear-gradient(180deg, #9e00ff 0%, #7000ff 100%);
+  border: none;
+  color: white;
+  border-radius: 24px;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 84px;
+  height: 84px;
+}
+
+.note .note-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(270deg, #1a1323 -2.4%, #181221 100%);
+  width: 100%;
+  height: 40px;
+  border-radius: 14px;
+  padding-right: 18px;
+  padding-left: 18px;
+  user-select: none;
+  font-weight: 500;
+}
+
+.note .note-controls button {
+  border: none;
+  background: none;
+  color: #5a407a;
+  cursor: pointer;
+}
+
+.note .note-controls button:hover {
+  transition: all 0.25s;
+  color: #73529c;
+}
+
+.note .note-controls button.editing {
+  transition: all 0.25s;
+  color: white;
+}
+
+.note .note-controls > div {
+  display: flex;
+  align-items: center;
+}
+
+.note .note-controls > div > button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.note .note-controls progress {
+  width: 430px;
+}
+
+#notes {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+progress[value] {
+  --color: #4c346a;
+  --background: #281e36;
+  height: 8px;
+  border-radius: 8px;
+  margin-left: 8px;
+  background: var(--background);
+}
+
+progress[value]::-webkit-progress-bar {
+  border-radius: 8px;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 8px;
+  background: var(--color);
+}
+
+.timeBar {
+  font-variant-numeric: tabular-nums;
+}
+
+dialog {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 1rem 3rem;
+  background: #281d35;
+  padding-top: 2rem;
+  border-radius: 20px;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.1);
+  -webkit-animation: fadeIn 1s ease both;
+  animation: fadeIn 1s ease both;
+  width: 800px;
+  min-height: 300px;
+  color: white;
+}
+dialog::backdrop {
+  -webkit-animation: fadeIn 1s ease both;
+  animation: fadeIn 1s ease both;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+dialog .x {
+  filter: grayscale(1);
+  border: none;
+  background: none;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  transition: ease filter, transform 0.3s;
+  cursor: pointer;
+  transform-origin: center;
+}
+dialog .x:hover {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+dialog h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+dialog p {
+  font-size: 1rem;
+  line-height: 1.3rem;
+  padding: 0.5rem 0;
+}
+dialog p a:visited {
+  color: rgb(var(--vs-primary));
+}
